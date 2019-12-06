@@ -1,6 +1,6 @@
 <html>
 <head>
-  <style>
+ <style>
   table {
         border: 1px solid black;
 	border-collapse:collapse;
@@ -21,27 +21,37 @@
         background-color: #4CAF50;
 	  color: white;
   }
+
+  input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  text-decoration: none;
+  margin: 2px 2px;
+  cursor: pointer;
+}
   </style>
   <body>
     <h1>Add a note</h1>
     <form method="POST" action="/">
       <!--<input type="text" name="title">-->
-      <textarea rows="4" cols="50" name="title"></textarea>
+      <textarea rows="4" cols="50" name="title"> </textarea>
+      <br> 
       <input type="submit" value="Add Note">
     </form>
 <a href="https://premkumar165.github.io/portfolio">Access My Portfolio</a>
 <hr>
     <h1>Note Management</h1>
+
+    <p id="demo"> </p>
     <table>
      <th align = "center">Note Inventory</th>
      <th align = "center">Update Note</th>
      <th align = "center">Delete Note</th>
       {% for book in books %}
        	<tr>
-          <td align = "center">
-	    {{datetime}}
-            {{book.title}}
-          </td>
+          <td align = "center"> {{book.title}} </td>
           <td align = "center">
             <form method="POST" action="./update" style="display: inline">
               <input type="hidden" value="{{book.title}}" name="oldtitle">
@@ -59,4 +69,8 @@
       {% endfor %}
     </table>
   </body>
+  <script>
+  var d = new Date();
+  document.getElementById("demo").innerHTML = d;
+  </script>
 </html>

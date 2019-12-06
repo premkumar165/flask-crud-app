@@ -1,4 +1,6 @@
 import os
+import datetime
+import time
 
 import subprocess
 from subprocess import Popen, PIPE
@@ -63,13 +65,6 @@ def delete():
     db.session.commit()
     return redirect("/")
 
-def hello():
-    cmd = ["ls","-l"]
-    p = subprocess.Popen(cmd, stdout = subprocess.PIPE,
-	                      stderr=subprocess.PIPE,
-			      stdin=subprocess.PIPE)
-    out,err = p.communicate()
-    return out
 
 if __name__ == "__main__":
     db.create_all()
